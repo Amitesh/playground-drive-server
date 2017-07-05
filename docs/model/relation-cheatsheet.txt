@@ -1,0 +1,50 @@
+
+
+Candidate
+---------
+has many          drives_candidates                        as DrivesCandidatesFk1s 
+belongs to many   drives                                   as DrivesCandidateDrives 
+
+
+Drive
+-----
+has many          drives_candidates                        as CandidatesFk0s 
+belongs to many   candidates                               as DrivesCandidateCandidates 
+
+
+DrivesCandidate
+---------------
+has many          hiring_status                            as HiringStatusFk1s 
+has many          user_test_results                        as UserTestResultsFk1s 
+belongs to        drives                                   as Drive 
+belongs to        candidates                               as Candidate 
+belongs to many   users                                    as HiringStatusUsers 
+belongs to many   test_types                               as UserTestResultTestTypes 
+
+
+HiringStatus
+------------
+belongs to        users                                    as User 
+belongs to        drives_candidates                        as DriveCandidate 
+
+
+MetaInfo
+--------
+
+
+TestType
+--------
+has many          user_test_results                        as UserTestResultsFk0s 
+belongs to many   drives_candidates                        as UserTestResultDriveCandidates 
+
+
+UserTestResult
+--------------
+belongs to        test_types                               as TestType 
+belongs to        drives_candidates                        as DriveCandidate 
+
+
+User
+----
+has many          hiring_status                            as HiringStatusFk0s 
+belongs to many   drives_candidates                        as HiringStatusDriveCandidates 
