@@ -9,10 +9,14 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             streams: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false,
+                unique: true
             },
             roles: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false,
+                unique: true
             },
             participated: {
                 type: Sequelize.STRING
