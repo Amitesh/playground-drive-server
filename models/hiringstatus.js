@@ -34,7 +34,7 @@ module.exports = function (sequelize, DataTypes) {
         comment: DataTypes.STRING
     }, {
         timestamps: true,
-        tableName: 'hiring_status',
+        tableName: 'hiring_statuses',
         classMethods: {
             associate: function (models) {
                 const HiringStatus = models.HiringStatus

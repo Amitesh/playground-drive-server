@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
     up: function (queryInterface, Sequelize) {
-        return queryInterface.createTable('metaInfos', {
+        return queryInterface.createTable('meta_infos', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -15,12 +15,12 @@ module.exports = {
                 type: Sequelize.STRING
             },
             participated: {
-                type: Sequelize.BOOLEAN
+                type: Sequelize.STRING
             },
             status: {
                 type: Sequelize.STRING
             },
-            hitingStatus: {
+            hiringStatus: {
                 type: Sequelize.STRING
             },
             createdAt: {
@@ -36,6 +36,6 @@ module.exports = {
         });
     },
     down: function (queryInterface, Sequelize) {
-        return queryInterface.dropTable('metaInfos');
+        return queryInterface.dropTable('meta_infos');
     }
 };

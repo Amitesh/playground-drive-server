@@ -19,7 +19,7 @@ function formatMeta(meta){
       formatedMeta.roles = _.split(info.roles, ',');
       formatedMeta.participated = _.split(info.participated, ',');
       formatedMeta.status = _.split(info.status, ',');
-      formatedMeta.hitingStatus = _.split(info.hitingStatus, ',');
+      formatedMeta.hiringStatus = _.split(info.hiringStatus, ',');
   }
   return formatedMeta;
 }

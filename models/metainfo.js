@@ -12,10 +12,10 @@ module.exports = function (sequelize, DataTypes) {
         roles: DataTypes.STRING,
         participated: DataTypes.STRING,
         status: DataTypes.STRING,
-        hitingStatus: DataTypes.STRING
+        hiringStatus: DataTypes.STRING
     }, {
         timestamps: true,
-        tableName: 'meta_info',
+        tableName: 'meta_infos',
         classMethods: {
             associate: function (models) {
                 // associations can be defined here

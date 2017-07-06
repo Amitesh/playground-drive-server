@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var drivescandidate = sequelize.define('drivescandidate', {
+    var drivesCandidate = sequelize.define('drivesCandidate', {
         id: {
             type: DataTypes.INTEGER,
             field: 'id',
@@ -91,5 +91,5 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
-    return drivescandidate;
+    return drivesCandidate;
 };

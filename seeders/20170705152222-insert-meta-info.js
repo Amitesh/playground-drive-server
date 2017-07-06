@@ -13,12 +13,12 @@ module.exports = {
          }], {});
          */
 
-        return queryInterface.bulkInsert('meta_info', [{
+        return queryInterface.bulkInsert('meta_infos', [{
             streams: 'qa,java,web ui',
             roles: 'lead,developer',
             participated: 'yes,no',
             status: 'Hold,In progress,Clear',
-            hitingStatus: 'selected,rejected',
+            hiringStatus: 'selected,rejected',
             createdAt: Sequelize.literal('now()'),
             updatedAt: Sequelize.literal('now()')
         }], {});
