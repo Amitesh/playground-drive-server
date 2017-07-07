@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
             onUpdate: 'cascade',
             onDelete: 'cascade'
         },
-        driveCandidateId: {
+        drivesCandidateId: {
             type: DataTypes.INTEGER,
             field: 'drive_candidate_id',
             allowNull: false,
