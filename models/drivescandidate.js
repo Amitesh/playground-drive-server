@@ -8,6 +8,9 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
+        participated: {
+            type: DataTypes.BOOLEAN
+        },
         driveId: {
             type: DataTypes.INTEGER,
             allowNull: false,

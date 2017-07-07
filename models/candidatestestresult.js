@@ -8,7 +8,10 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        participated: {type: DataTypes.BOOLEAN, defaultValue: false},
+        participated: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         score: DataTypes.INTEGER,
         status: DataTypes.STRING,
         testTypeId: {
