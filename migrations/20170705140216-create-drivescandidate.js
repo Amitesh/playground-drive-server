@@ -11,8 +11,19 @@ module.exports = {
             participated: {
                 type: Sequelize.BOOLEAN
             },
+            candidateId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'candidates',
+                    key: 'id'
+                }
+            },
             driveId: {
-                type: Sequelize.INTEGER
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'drives',
+                    key: 'id'
+                }
             },
             createdAt: {
                 allowNull: false,

@@ -18,7 +18,11 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             drivesCandidateId: {
-                type: Sequelize.INTEGER
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'drives_candidates',
+                    key: 'id'
+                }
             },
             createdAt: {
                 allowNull: false,

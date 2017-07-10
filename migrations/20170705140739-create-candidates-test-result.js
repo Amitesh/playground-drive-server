@@ -18,10 +18,18 @@ module.exports = {
                 type: Sequelize.STRING
             },
             testTypeId: {
-                type: Sequelize.STRING
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'test_types',
+                    key: 'id'
+                }
             },
-            DrivesCandidateId: {
-                type: Sequelize.STRING
+            drivesCandidateId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'drives_candidates',
+                    key: 'id'
+                }
             },
             createdAt: {
                 allowNull: false,
