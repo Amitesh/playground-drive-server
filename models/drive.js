@@ -16,6 +16,7 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'drives',
         classMethods: {
             associate: function (models) {

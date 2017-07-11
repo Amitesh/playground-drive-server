@@ -12,9 +12,13 @@ module.exports = function (sequelize, DataTypes) {
         roles: DataTypes.STRING,
         participated: DataTypes.STRING,
         status: DataTypes.STRING,
-        hiringStatus: DataTypes.STRING
+        hiringStatus: {
+            field: 'hiring_status',
+            type: DataTypes.STRING
+        }
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'meta_infos',
         classMethods: {
             associate: function (models) {

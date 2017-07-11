@@ -31,8 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/meta-info', metaInfo);
-app.use('/users', users);
-app.use('/candidates', candidates);
+app.use('/user', users);
+app.use('/candidate', candidates);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

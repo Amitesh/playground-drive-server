@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN
         },
         driveId: {
+            field: 'drive_id',
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -23,6 +24,7 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: 'cascade'
         },
         candidateId: {
+            field: 'candidate_id',
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -35,6 +37,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'drives_candidates',
         classMethods: {
             associate: function (models) {
@@ -48,14 +51,14 @@ module.exports = function (sequelize, DataTypes) {
 
                 DrivesCandidate.hasMany(HiringStatus, {
                     as: 'HiringStatusFk1s',
-                    foreignKey: 'drive_candidate_id',
+                    foreignKey: 'drives_candidate_id',
                     onDelete: 'NO ACTION',
                     onUpdate: 'NO ACTION'
                 })
 
                 DrivesCandidate.hasMany(UserTestResult, {
                     as: 'UserTestResultsFk1s',
-                    foreignKey: 'drive_candidate_id',
+                    foreignKey: 'drives_candidate_id',
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
                 })
@@ -77,7 +80,7 @@ module.exports = function (sequelize, DataTypes) {
                 DrivesCandidate.belongsToMany(User, {
                     as: 'HiringStatusUsers',
                     through: HiringStatus,
-                    foreignKey: 'drive_candidate_id',
+                    foreignKey: 'drives_candidate_id',
                     otherKey: 'user_id',
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
@@ -94,5 +97,10 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
+
+    drivesCandidate.hook('beforeSave', function (drivesCandidateObj){
+        drivesCandidateObj.participated = drivesCandidateObj.participated === 'Yes' || drivesCandidateObj.participated === 'yes';
+    });
+
     return drivesCandidate;
 };

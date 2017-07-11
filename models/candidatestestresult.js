@@ -15,6 +15,7 @@ module.exports = function (sequelize, DataTypes) {
         score: DataTypes.INTEGER,
         status: DataTypes.STRING,
         testTypeId: {
+            field: 'test_type_id',
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -26,6 +27,7 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: 'cascade'
         },
         drivesCandidateId: {
+            field: 'drives_candidate_id',
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -38,6 +40,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'candidates_test_results',
         classMethods: {
             associate: function (models) {
@@ -54,13 +57,18 @@ module.exports = function (sequelize, DataTypes) {
                 });
 
                 CandidatesTestResult.belongsTo(DrivesCandidate, {
-                    as: 'DriveCandidate',
-                    foreignKey: 'drive_candidate_id',
+                    as: 'DrivesCandidate',
+                    foreignKey: 'drives_candidate_id',
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
                 })
             }
         }
+    });
+
+    candidatesTestResult.hook('beforeSave', function (candidatesTestResultObj){
+        candidatesTestResultObj.participated = candidatesTestResultObj.participated === 'Yes' ||
+            candidatesTestResultObj.participated === 'yes';
     });
     return candidatesTestResult;
 };

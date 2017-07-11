@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
         order: DataTypes.STRING
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'test_types',
         classMethods: {
             associate: function (models) {
@@ -30,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
                     as: 'UserTestResultDriveCandidates',
                     through: UserTestResult,
                     foreignKey: 'test_type_id',
-                    otherKey: 'drive_candidate_id',
+                    otherKey: 'drives_candidate_id',
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
                 })

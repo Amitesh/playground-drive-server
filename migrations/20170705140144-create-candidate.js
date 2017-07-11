@@ -26,11 +26,13 @@ module.exports = {
                 type: Sequelize.STRING
             },
             createdAt: {
+                field: 'created_at',
                 allowNull: false,
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.literal('NOW()')
             },
             updatedAt: {
+                field: 'updated_at',
                 allowNull: false,
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.literal('NOW()')

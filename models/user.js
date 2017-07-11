@@ -30,6 +30,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'users',
         classMethods: {
             associate: function (models) {
@@ -48,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
                     as: 'HiringStatusDriveCandidates',
                     through: HiringStatus,
                     foreignKey: 'user_id',
-                    otherKey: 'drive_candidate_id',
+                    otherKey: 'drives_candidate_id',
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
                 })

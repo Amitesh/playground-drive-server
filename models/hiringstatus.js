@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         drivesCandidateId: {
             type: DataTypes.INTEGER,
-            field: 'drive_candidate_id',
+            field: 'drives_candidate_id',
             allowNull: false,
             references: {
                 model: 'drives_candidates',
@@ -34,6 +34,7 @@ module.exports = function (sequelize, DataTypes) {
         comment: DataTypes.STRING
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'hiring_statuses',
         classMethods: {
             associate: function (models) {
@@ -50,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
 
                 HiringStatus.belongsTo(DrivesCandidate, {
                     as: 'DriveCandidate',
-                    foreignKey: 'drive_candidate_id',
+                    foreignKey: 'drives_candidate_id',
                     onDelete: 'cascade',
                     onUpdate: 'cascade'
                 })

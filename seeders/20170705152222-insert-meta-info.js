@@ -3,13 +3,11 @@
 module.exports = {
     up: function (queryInterface, Sequelize) {
         return queryInterface.bulkInsert('meta_infos', [{
-            streams: 'qa,java,ui,hr,andoid,ios,sm,ba',
-            roles: 'architect,lead,developer,manager',
-            participated: 'yes,no',
-            status: 'Hold,In progress,Clear',
-            hiringStatus: 'selected,rejected',
-            createdAt: Sequelize.literal('now()'),
-            updatedAt: Sequelize.literal('now()')
+            'streams': 'qa,java,ui,hr,andoid,ios,sm,ba',
+            'roles': 'architect,lead,developer,manager',
+            'participated': 'yes,no',
+            'status': 'Hold,In progress,Clear',
+            'hiring_status': 'selected,rejected'
         }], {});
     },
 

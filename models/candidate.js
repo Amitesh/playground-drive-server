@@ -18,6 +18,7 @@ module.exports = function (sequelize, DataTypes) {
         role: DataTypes.STRING
     }, {
         timestamps: true,
+        underscored: true,
         tableName: 'candidates',
         classMethods: {
             associate: function (models) {

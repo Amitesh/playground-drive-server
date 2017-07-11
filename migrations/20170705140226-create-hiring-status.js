@@ -15,9 +15,11 @@ module.exports = {
                 type: Sequelize.STRING
             },
             userId: {
+                field: 'user_id',
                 type: Sequelize.INTEGER
             },
             drivesCandidateId: {
+                field: 'drives_candidate_id',
                 type: Sequelize.INTEGER,
                 references: {
                     model: 'drives_candidates',
@@ -25,11 +27,13 @@ module.exports = {
                 }
             },
             createdAt: {
+                field: 'created_at',
                 allowNull: false,
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.literal('NOW()')
             },
             updatedAt: {
+                field: 'updated_at',
                 allowNull: false,
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.literal('NOW()')
