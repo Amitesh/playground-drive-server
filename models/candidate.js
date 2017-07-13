@@ -19,13 +19,17 @@ module.exports = function (sequelize, DataTypes) {
     }, {
         timestamps: true,
         underscored: true,
-        tableName: 'candidates',
+        tableName: 'candidates'
+        /*,
         classMethods: {
             associate: function (models) {
                 // associations can be defined here
-                const Candidate = models.Candidate;
-                const DrivesCandidate = models.DrivesCandidate;
+                const Candidate = models.candidate;
+                const DrivesCandidate = models.drivesCandidate;
                 const Drive = models.Drive;
+
+                console.log('**********DrivesCandidate =>', DrivesCandidate);
+                console.log('**********Drive =>', Drive);
 
                 Candidate.hasMany(DrivesCandidate, {
                     as: 'DrivesCandidatesFk1s',
@@ -43,7 +47,34 @@ module.exports = function (sequelize, DataTypes) {
                     onUpdate: 'cascade'
                 });
             }
-        }
+        }*/
     });
+
+    candidate.associate = function(models) {
+
+        candidate.hasMany(models.drivesCandidate, {
+            // as: 'DrivesCandidatesFk1s',
+            foreignKey: 'candidate_id',
+            onDelete: 'cascade',
+            onUpdate: 'cascade'
+        });
+
+        candidate.belongsToMany(models.drive, {
+            // as: 'DrivesCandidateDrives',
+            through: models.drivesCandidate,
+            foreignKey: 'candidate_id',
+            otherKey: 'drive_id',
+            onDelete: 'cascade',
+            onUpdate: 'cascade'
+        });
+
+        // candidate.belongsToMany(models.candidatesTestResult, {
+        //     through: models.drivesCandidate,
+        //     foreignKey: 'candidate_id',
+        //     onDelete: 'cascade',
+        //     onUpdate: 'cascade'
+        // });
+    };
+
     return candidate;
 };

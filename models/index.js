@@ -25,10 +25,18 @@ fs
     });
 
 Object.keys(db).forEach(function (modelName) {
+    console.log('***** =>', modelName, db[modelName]);
     if (db[modelName].associate) {
+        console.log('haha hehe');
         db[modelName].associate(db);
     }
 });
+
+// Object.keys(db).forEach(function(modelName) {
+//     if ("associate" in db[modelName]) {
+//         db[modelName].associate(db);
+//     }
+// });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
