@@ -23,6 +23,7 @@ router.get('/show', function (req, res, next) {
                 "candidate"."firstname" AS "candidate_firstname", \
                 "candidate"."lastname" AS "candidate_lastname", \
                 "candidate"."email" AS "candidate_email", \
+                "candidate"."phone" AS "candidate_phone", \
                 "candidate"."stream" AS "candidate_stream", \
                 "candidate"."role" AS "candidate_role", \
                 "candidates_test_result"."id" AS "candidates_test_result_id", \
@@ -84,6 +85,7 @@ router.get('/show', function (req, res, next) {
                     firstname: row.candidate_firstname,
                     lastname: row.candidate_lastname,
                     email: row.candidate_email,
+                    phone: row.candidate_phone,
                     stream: row.candidate_stream,
                     role: row.candidate_role
                 };
@@ -93,7 +95,7 @@ router.get('/show', function (req, res, next) {
             o.tests = o.tests || {};
             o.tests[testId] = {
                 candidatesTestResultId: row.candidates_test_result_id,
-                participated: row.candidates_test_result_participated,
+                participated: row.candidates_test_result_participated ? 'yes' : 'no',
                 score: row.candidates_test_result_score,
                 status: row.candidates_test_result_status,
                 name: row.test_type_name,
@@ -106,6 +108,13 @@ router.get('/show', function (req, res, next) {
                     id: row.hiring_status_id,
                     status: row.hiring_status_status,
                     comment: row.hiring_status_comment
+                };
+            }
+
+            if (!o.drivesCandidate) {
+                o.drivesCandidate = {
+                    id: row.drives_candidate_id,
+                    participated: row.drives_candidate_participated ? 'yes' : 'no'
                 };
             }
 
@@ -124,72 +133,6 @@ router.get('/show', function (req, res, next) {
         });
     }
 
-
-    /*
-     models.drive.findAll(
-     {
-     include: [
-     {
-     model: models.candidate,
-     required: true
-     }
-     ]
-
-     },
-     {
-     logging: console.log,
-     raw: true
-     }
-     ).then(function success(o) {
-     console.log('success =>\n', o)
-     res.json(o)
-     }, function failure(error) {
-     console.log('failure =>\n', error)
-     })
-     */
-    /*
-     var data = {
-     drives: [{
-     id: '',
-     name: '',
-     scheduledOn: '',
-     candidates: [
-     {
-     id: '',
-     firstname: '',
-     lastname: '',
-     email: '',
-     phone: '',
-     stream: '',
-     role: '',
-     drivesCandidate: {
-     id: '',
-     driveId: '',
-     candidateId: '',
-     participated: '',
-
-     candidatesTestResults: [
-     {
-     id: '',
-     testTypeId: '',
-     participated: '',
-     score: '',
-     status: ''
-     }
-     ],
-     hiringStatus: {
-     id: '',
-     status: '',
-     comment: ''
-     }
-     }
-     }
-     ]
-     }]
-     }
-     */
-
-// res.send('respond with a resource');
 })
 
 module.exports = router

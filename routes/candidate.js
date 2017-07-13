@@ -53,7 +53,7 @@ router.post('/create-with-drive', function (req, res, next) {
                             addHiringStatus(hiringStatus, drivesCandidateObj, userObj)
                                 .then(function success(hiringStatusObj) {
                                     console.log('=== done hiring status insert');
-                                    res.send('Thanks. I got the request with params.', hiringStatusObj);
+                                    res.send(hiringStatusObj); // , hiringStatusObj
                                 }, failure);
                         }, failure);
 
