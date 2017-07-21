@@ -246,7 +246,20 @@ function findOrCreateCandidate(candidate) {
     }).then(
         function success(candidateObj) {
             if (candidateObj) {
-                deferred.resolve(candidateObj);
+                candidateObj.firstname = candidate.firstname;
+                candidateObj.lastname = candidate.lastname;
+                candidateObj.email = candidate.email;
+                candidateObj.phone = candidate.phone;
+                candidateObj.stream = candidate.stream;
+                candidateObj.role = candidate.role;
+
+                candidateObj.save()
+                    .then(function success(candidate) {
+                        deferred.resolve(candidate);
+                    }, function failure(error) {
+                        console.log('findOrCreateCandidate not found =>', error);
+                        deferred.reject(error)
+                    });
             } else {
                 // candidate = req.body.candidate;
 

@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var models = require('../models')
 var _ = require('lodash')
+var moment = require('moment');
 
 var db = require('../models/index')
 
@@ -75,7 +76,7 @@ router.get('/show', function (req, res, next) {
                 o.drive = {
                     id: row.drive_id,
                     name: row.drive_name,
-                    scheduledOn: row.drive_scheduled_on,
+                    scheduledOn: moment(row.drive_scheduled_on).format("Do MMMM, YYYY")
                 };
             }
 
